@@ -178,7 +178,7 @@
                 <div class="card news_card">
                   <div class="card-header">Latest News</div>
                   <div class="card-body">
-                    <button class="btn btn-primary" onclick="news()">Add News</button>
+                    <button class="btn btn-primary" onclick="news()">Add Newss</button>
                   </div>
                 </div>
               </div>
