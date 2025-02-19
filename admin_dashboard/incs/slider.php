@@ -1,10 +1,11 @@
 <link href="../css/slider.css" rel="stylesheet">
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="slider_form" id="slider_form" method="post" enctype="multipart/form-data" style="display:none !important">
-    <label class="slider_label">Add slider</label>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="slider_form" id="slider_form" method="post"
+    enctype="multipart/form-data" style="display:none !important">
+    <label class="slider_label" style="font-weight:bold; font-size:23px;">Add slider</label>
     <input type="file" class="slider_path" name="slider_image" required />
     <label class="slider_label">Add title</label>
     <textarea rows="10" class="slider_title" name="slider_title" class="form-control" required></textarea>
-    
+
     <button type="submit" class="btn btn-success" id="sliderBtn" name="submit" value="sub">Submit</button>
 </form>
 
@@ -57,7 +58,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub' && isset($_FILES['slide
                 $query = "INSERT INTO `web_slider` (slider_path, slider_title) VALUES ('$access_dir', '$slider_title')";
                 // Assuming $conn is your MySQL connection, check if the query executes correctly
                 if (mysqli_query($conn, $query)) {
-                    echo "Data submitted successfully.";
+                    // echo "Data submitted successfully.";
                 } else {
                     echo "Error inserting data into the database: " . mysqli_error($conn);
                 }
@@ -70,6 +71,3 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub' && isset($_FILES['slide
     }
 }
 ?>
-
-
-

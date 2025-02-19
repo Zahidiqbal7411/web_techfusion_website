@@ -1,10 +1,8 @@
-
-
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="news_form" method="post" style="display:none !important">
-  
-    <label>Add news</label>
+
+    <label style="font-weight:bold; font-size:23px;">Add news</label>
     <textarea rows="10" id="news_header" name="news_header" class="form-control" required></textarea>
-    
+
     <button type="submit" class="btn btn-success mt-3" id="sliderBtn" name="submit" value="sub">Submit</button>
 </form>
 

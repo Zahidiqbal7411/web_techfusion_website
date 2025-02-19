@@ -123,8 +123,8 @@ while ($row = $result->fetch_assoc()) {
 
                     <div class="news-list">
                     <?php
-$news_query = "SELECT news_header FROM news";
-$result = mysqli_query($conn, $news_query);
+        $news_query = "SELECT news_header FROM news";
+         $result = mysqli_query($conn, $news_query);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
