@@ -1,5 +1,6 @@
+
 <link href="../css/slider.css" rel="stylesheet">
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="slider_form" id="slider_form" method="post"
+<form action="" class="slider_form" id="slider_form" method="post"
     enctype="multipart/form-data" style="display:none !important">
     <label class="slider_label" style="font-weight:bold; font-size:23px;">Add slider</label>
     <input type="file" class="slider_path" name="slider_image" required />

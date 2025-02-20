@@ -1,4 +1,5 @@
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="panel_form" id="marquee_form" method="post"
+
+<form action="" class="panel_form" id="marquee_form" method="post"
     style="display:none !important">
     <label class="panel_label" style="font-weight:bold; font-size:23px;">Add Marquee</label>
     <textarea rows="10" id="panel_text" name="panel_text" class="form-control panel_text" required></textarea>

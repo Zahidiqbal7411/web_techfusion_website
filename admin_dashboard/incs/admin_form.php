@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="admin_form" method="post" style="display:none !important">
      <h1 class="d-flex justify-content-center align-items-center fw-bold" >Add  admin</h1>
     <label style="font-weight:bold; font-size:15px;">User name</label>
@@ -9,42 +10,53 @@
     <label style="font-weight:bold; font-size:15px; margin-top:2px;">email</label>
     <input  type="email" id="email" name="email" class="form-control" required>
     <div >
+    <label class="mt-2">Role</label> 
+    <select class="form-control" name="role">
+    <option value='active'>Select role</option>
+    <option value='Admin'>admin</option>
+    <option value='Subadmin'>sub admin</option>
+    <option value='User'>user</option>
+    </select>   
+  </div>
+      <div class="form-control"></div>
   <h1  style="font-size:25px; font-weight:bold; margin-top:10px;"> Permissions for admin</h1>
   <form>
     <div class="form-check mt-2">
-      <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+      <input class="form-check-input" type="checkbox" value="" id="">
       <label class="form-check-label" for="checkbox1" style="font-size:15px;">
         Do you allow admin to add Slider
       </label>
     </div>
     
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="checkbox2" >
+      <input class="form-check-input" type="checkbox" value="" id="" >
       <label class="form-check-label" for="checkbox2" style="font-size:15px;">
       Do you allow admin to add news 
       </label>
     </div>
     
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="checkbox3" checked>
+      <input class="form-check-input" type="checkbox" value="" id="" checked>
       <label class="form-check-label" for="checkbox3" style="font-size:15px;">
       Do you allow admin to add marquee
       </label>
     </div>
-  </form>
+
 
 
     <button type="submit" class="btn btn-success mt-3" id="sliderBtn" name="submit" value="sub">Add sub admin</button>
 </form>
 </div>
 <?php 
-if(isset($_POST['submit']) && $_POST['submit'] == 'sub' && isset($_POST['username']) && isset($_POST['contact']) && isset($_POST['email'])){
+require_once('conn.php');
+if(isset($_POST['submit']) && $_POST['submit'] == 'sub' && isset($_POST['username']) && isset($_POST['contact']) && isset($_POST['email']) && ($_POST['role'])){
 
 $username=$_POST['username'];
 $password=$_POST['password'];
 $contact=$_POST['contact'];
 $email=$_POST['email'];
-$query="INSERT INTO `admin` (admin_username,admin_password,admin_contact,admin_email) VALUES ('$username','$password','$contact','$email') ";
+$role=$_POST['role'];
+$query="INSERT INTO `admin` (admin_username,admin_password,admin_contact,admin_email,role) VALUES ('$username','$password','$contact','$email','$role') ";
 $result=mysqli_query($conn,$query);
 If($result){
     echo "sub admin added successfully";

@@ -1,7 +1,9 @@
 <link href="../css/admin.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <?php 
 require_once('conn.php');
+session_start();
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'sub')
  {
@@ -12,7 +14,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub')
     $total_records=mysqli_num_rows($result);
     
     if ($total_records == 0) {
-        echo "admin login successful";
+        echo "not done the login ";
         header("location:admin_login.php?");
        
         exit;
@@ -20,12 +22,16 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub')
     }
     
     
-    if($total_records>0)
-    {
-       
-        header("location:test.php");
-        exit;
-    }
+    if($total_records>0){
+    $admin = mysqli_fetch_assoc($result);  // Fetch the row of the admin
+    $_SESSION['admin_id'] = $admin['admin_id'];  // Assuming the field is `admin_id`
+    $_SESSION['admin_username'] = $admin['admin_username'];
+    $_SESSION['admin_password'] = $admin['admin_password'];
+    $_SESSION['role'] = $admin['role'];
+    header("Location: index.php");
+    exit;
+}
+    
 
 }
 
@@ -39,7 +45,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub')
             required>
 
         <label for="password" class="admin_label">Password</label>
-        <input type="password" class="form-control admin_password" id="username" name="password"
+        <input type="password" class="form-control admin_password" id="password" name="password"
             placeholder="Enter username" required>
         <button type="submit" class="btn btn-primary" name="submit" value="sub">Login</button>
     </form>
