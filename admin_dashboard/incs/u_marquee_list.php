@@ -1,13 +1,13 @@
 
 
-<div class="container" id="marquee_table" style="display:none; width:1000px;">
+<div class="container"  style="display:none; width:1000px;">
 <h1 class="d-flex justify-content-center align-items-center mt-5 fw-bold">Marquee details</h1>
-  <table class="table table-bordered border-1">
+  <table class="table table-bordered border-1" id="user_marquee_table">
     <thead class="table-dark">
       <tr>
         <th class="w-75">marquee text</th>
         
-        <th class="w-25">Actions</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -39,10 +39,7 @@
       <tr>
         <td><?php echo $data['panel_text'];?></td>
         
-        <td>
-          <button href="marquee_edit.php?marquee_id=<?php echo $data['panel_id']?>" class="btn btn-success">edit</button>
-          <a href="?marquee_delete=<?php echo $data['panel_id']?>" class="btn btn-danger">Delete</a>
-        </td>
+       
       </tr>
       <?php endforeach;?>
     </tbody>

@@ -12,6 +12,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub')
     $query="SELECT * FROM `admin` where admin_username='$username' AND admin_password='$password'";
     $result=mysqli_query($conn,$query);
     $total_records=mysqli_num_rows($result);
+    $admin = mysqli_fetch_assoc($result);
     
     if ($total_records == 0) {
         echo "not done the login ";
@@ -23,8 +24,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'sub')
     
     
     if($total_records>0){
-    $admin = mysqli_fetch_assoc($result);  // Fetch the row of the admin
-    $_SESSION['admin_id'] = $admin['admin_id'];  // Assuming the field is `admin_id`
+      
+    $_SESSION['admin_id'] = $admin['admin_id'];  
     $_SESSION['admin_username'] = $admin['admin_username'];
     $_SESSION['admin_password'] = $admin['admin_password'];
     $_SESSION['role'] = $admin['role'];

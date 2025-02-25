@@ -1,3 +1,32 @@
+<?php 
+require_once('conn.php');
+if(isset($_POST['submit']) && $_POST['submit'] == 'sub' && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['role']) ){
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+$contact=$_POST['contact'];
+$email=$_POST['email'];
+$role=$_POST['role'];
+
+$query_check = "SELECT * FROM `admin` WHERE admin_username = '$username' OR admin_email = '$email'";
+$result_check = mysqli_query($conn, $query_check);
+if (mysqli_num_rows($result_check) > 0) {
+    echo "";
+} else {
+    $query = "INSERT INTO `admin` (admin_username, admin_password, admin_contact, admin_email, role) 
+              VALUES ('$username', '$password', '$contact', '$email', '$role')";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+      echo '<script>window.location.href="index.php"</script>';
+    }
+    else{
+      echo "not added";
+    }
+}
+}
+
+?> 
 
 <form action="" id="sub_admin_form" method="post" style="display:none !important">
      <h1 class="d-flex justify-content-center align-items-center fw-bold" >Add sub admin</h1>
@@ -14,9 +43,9 @@
     <label class="mt-2">Role</label> 
     <select class="form-control" name="role">
     <option>Select role</option>
-    <option value="ADMIN">admin</option>
-    <option value="SUBADMIN">sub admin</option>
-    <option value="SUPERADMIN">user</option>
+    <option value="Admin">admin</option>
+    <option value="Subadmin">sub admin</option>
+    <option value="User">user</option>
     </select>   
   </div>
   <h1  style="font-size:25px; font-weight:bold; margin-top:10px;"> Permissions for Sub-admin</h1>
@@ -44,27 +73,6 @@
  
 
 
-    <button type="submit" class="btn btn-success mt-3" id="sliderBtn" name="submit" value="sub">Add sub admin</button>
+    <button type="submit" class="btn btn-success mt-3" id="sliderBtn" name="submit" value="sub" >Add sub admin</button>
 </form>
 
-<?php 
-require_once('conn.php');
-if(isset($_POST['submit']) && $_POST['submit'] == 'sub' ){
-
-$username=$_POST['username'];
-$password=$_POST['password'];
-$contact=$_POST['contact'];
-$email=$_POST['email'];
-$role=$_POST['role'];
-
-$query="INSERT INTO `admin` (admin_username,admin_password,admin_contact,admin_email,role) VALUES ('$username','$password','$contact','$email','$role') ";
-$result=mysqli_query($conn,$query);
- 
-if($result){
- echo "data submitted";
-
-}
-
-}
-
-?> 
