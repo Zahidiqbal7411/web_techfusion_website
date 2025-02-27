@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']) && $_POST['s
         echo "Error updating news: " . mysqli_error($conn);
     }
     $stmt->close();
+
 }
 ?>
 
@@ -50,3 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']) && $_POST['s
 
     <button type="submit" class="btn btn-success mt-3" id="sliderBtn" name="submit" value="sub">update</button>
 </form>
+<?php
+
+
+
+
+
+?>

@@ -29,14 +29,7 @@ $query="UPDATE set slider_header='$slider_header', slider_path='$slider_path' WH
     <button type="submit" class="btn btn-success" id="sliderBtn" name="submit" value="sub">Update</button>
     
 </form>
-<form action="login.php" method="post">
-    <input type="submit" class="btn btn-primary" value="Login">
-    <input type="hidden" class="btn btn-danger" value="Logout">
-    <input type="submit" class="btn btn-success" value="in and out">
-    <input type="hidden" class="btn btn-secondary" value="entries">
-    <button  class=""></button>
- 
 
 
 
-</form>
+
